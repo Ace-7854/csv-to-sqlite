@@ -1,6 +1,6 @@
 import sqlite3
 
-con = sqlite3.Connection("example_database.db")
+con = sqlite3.Connection("new_database.db")
 
 def create_table():
     cur = con.cursor("""CREATE TABLE "Employees" ("UID"	INTEGER UNIQUE,	"Name"	TEXT NOT NULL,
@@ -16,3 +16,8 @@ def get_uid(name):
     query = f"SELECT UID FROM Employees WHERE Name={name};"
     rec = con.execute(query)
     rec.fetchall()
+
+def ins_new_record(data, destination, email, name, number_of_people,phone,tripid):
+    query = "INSERT INTO booking (data, Destination, Email, Name,Phone ,NumberPeople, TripID) VALUES (?,?,?,?,?,?,?)"
+    con.execute(query,(data, destination, email, name, phone, number_of_people, tripid))
+    con.commit()

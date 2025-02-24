@@ -2,7 +2,7 @@ import csv
 
 def get_records():
     #get details of record from CSV
-    with open("employees.csv","r") as file:
+    with open("booking.csv","r") as file:
         records = file.readlines()
     
     records.remove(records[0])
